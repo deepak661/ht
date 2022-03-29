@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color:blue;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+<body>
+
+<h3>Exam Data</h3>
+
+<div>
+  <form method = "post" name ="google-sheet">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="Name" placeholder="Your name..">
+    <label for="pmark">Passmarks</label>
+    <input type="text" id="pmark" name="Passmarks" placeholder="Pass mark..">
+
+    <label for="Fmark">Fullmarks</label>
+    <input type="text" id="Fmark" name="Fullmarks" placeholder="Full mark..">
+    <label for="mobt">Marks obtained</label>
+    <input type="text" id="mobt" name="Marks obtained" placeholder="Marks obtained..">
+<label for="p">%</label>
+    <input type="text" id="p" name="Percentage" placeholder="Percentage..">
+
+
+
+    <label for="Name1">Who is using this?</label>
+    <select id="Name1" name="Given By:">
+      <option value="Roshan">Roshan</option>
+      <option value="Aadarsha">Aadarsha</option>
+      <option value="Deepak">Deepak</option>
+    </select>
+  
+    <input type="submit" value="Submit">
+  </form>
+</div>
+ <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzcDxcgkdYCaXojm-V9OTbX3UoLDB8GSIyTB4GeWXsJqfDZ1-IHC6Cb39jybHzX1g6r/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Google sheet ma gai sakyo bro"))
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html>
+
+
